@@ -2,22 +2,32 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useMutation, gql } from '@apollo/client';
 import { AUTH_TOKEN } from '../constants';
+import { Link } from 'react-router-dom';
 
 
 const SIGNUP_MUTATION = gql`
-  mutation SignupMutation(
-    $email: String!
-    $password: String!
-    $name: String!
+mutation SignupMutation(
+  $email: String!
+  $password: String!
+  $username: String!
+) {
+  createUser(
+    email: $email
+    password: $password
+    username: $username
   ) {
-    signup(
-      email: $email
-      password: $password
-      name: $name
-    ) {
-      token
-    }
+   user{
+    id
+    email
+    password
+    username
   }
+  }
+
+  tokenAuth(username: $username,password: $password){
+  token
+  }
+}
 `;
 
 const LOGIN_MUTATION = gql`
@@ -30,6 +40,7 @@ const LOGIN_MUTATION = gql`
     }
   }
 `;
+
 
 
 const Login = () => {
@@ -53,17 +64,26 @@ const [login] = useMutation(LOGIN_MUTATION, {
   }
 });
 
+
+function refreshPage(){
+  window.location.reload(true);
+}
+
 const [signup] = useMutation(SIGNUP_MUTATION, {
   variables: {
-    name: formState.name,
+    username: formState.name,
     email: formState.email,
     password: formState.password
   },
-  onCompleted: ({ signup }) => {
-    localStorage.setItem(AUTH_TOKEN, signup.token);
+  onCompleted: ({ tokenAuth }) => {
+    localStorage.setItem(AUTH_TOKEN, tokenAuth.token);
     history.push('/');
+
   }
 });
+
+
+
   return (
     <div>
       <h4 className="mv3">
@@ -92,7 +112,7 @@ const [signup] = useMutation(SIGNUP_MUTATION, {
             })
           }
           type="text"
-          placeholder="Your email address"
+          placeholder="Your name"
         />
         <input
           value={formState.password}
@@ -110,10 +130,23 @@ const [signup] = useMutation(SIGNUP_MUTATION, {
 
 <button
     className="pointer mr2 button"
-    onClick={formState.login ? login : signup}
+    onClick={() => {
+      //formState.login ? login : signup ()
+      if (formState.login ) {
+        login(formState.username, formState.password ).then(()=>{
+          window.location.reload()
+
+        })
+
+      } else {
+        signup(formState.name, formState.password)
+      }
+    }}
   >
-    {formState.login ? 'login' : 'create account'}
-  </button>
+    {formState.login ? 'login' : 'create account' }
+
+
+  </button >
   <button
     className="pointer button"
     onClick={(e) =>
@@ -123,7 +156,6 @@ const [signup] = useMutation(SIGNUP_MUTATION, {
       })
     }
   >
-
           {formState.login
             ? 'need to create an account?'
             : 'already have an account?'}

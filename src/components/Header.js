@@ -1,13 +1,17 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { Link, withRouter } from 'react-router-dom';
+//import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AUTH_TOKEN } from '../constants';
+import Login from './Login';
 
 const Header = () => {
   const history = useHistory();
   const authToken = localStorage.getItem(AUTH_TOKEN);
 
-
+  function clickLogout(){
+    history.push("/login")
+  }
   return (
     <div className="flex pa1 justify-between nowrap orange">
       <div className="flex flex-fixed black">
@@ -15,25 +19,24 @@ const Header = () => {
         <Link to="/" className="ml1 no-underline black">
           new
         </Link>
-        <div className="ml1">|</div>
+
+	<div className="ml1">|</div>
         <Link to="/top" className="ml1 no-underline black">
           top
         </Link>
+
         <div className="ml1">|</div>
-        <Link
-          to="/search"
-          className="ml1 no-underline black"
-        >
+        <Link to="/search" className="ml1 no-underline black">
           search
         </Link>
+
         {authToken && (
           <div className="flex">
             <div className="ml1">|</div>
-            <Link
-              to="/create"
-              className="ml1 no-underline black"
-            >
-              submit
+	<Link to="/create"
+          className="ml1 no-underline black"
+        >
+         submit
             </Link>
           </div>
         )}
@@ -44,7 +47,9 @@ const Header = () => {
             className="ml1 pointer black"
             onClick={() => {
               localStorage.removeItem(AUTH_TOKEN);
-              history.push(`/`);
+              clickLogout()
+              window.location.reload()
+
             }}
           >
             logout
@@ -60,8 +65,6 @@ const Header = () => {
       </div>
     </div>
   );
-
-
 };
 
 export default Header;
