@@ -15,19 +15,19 @@ const Header = () => {
   return (
     <div className="flex pa1 justify-between nowrap orange">
       <div className="flex flex-fixed black">
-        <div className="fw7 mr1">Hacker News</div>
+        <div className="fw7 mr1">⠀Links by Pedro xD⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</div>
         <Link to="/" className="ml1 no-underline black">
-          new
+        ⠀🕐RECIENTES⠀
         </Link>
 
 	<div className="ml1">|</div>
         <Link to="/top" className="ml1 no-underline black">
-          top
+        ⠀📈PRINCIPALES⠀
         </Link>
 
         <div className="ml1">|</div>
         <Link to="/search" className="ml1 no-underline black">
-          search
+        ⠀🔍BUSCAR⠀
         </Link>
 
         {authToken && (
@@ -36,7 +36,7 @@ const Header = () => {
 	<Link to="/create"
           className="ml1 no-underline black"
         >
-         submit
+         ⠀➕AGREGAR NUEVO LINK⠀
             </Link>
           </div>
         )}
@@ -52,14 +52,14 @@ const Header = () => {
 
             }}
           >
-            logout
+            ⠀SALIR 🁢⠀
           </div>
         ) : (
           <Link
             to="/login"
             className="ml1 no-underline black"
           >
-            login
+            ⠀INGRESAR 🁣⠀
           </Link>
         )}
       </div>

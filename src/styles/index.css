@@ -1,23 +1,25 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Verdana, Geneva, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 input {
   max-width: 500px;
+  background-color: #b8bceb;
+
 }
 
 .gray {
-  color: #828282;
+  color: #ec3616;
 }
 
 .orange {
-  background-color: #ff6600;
+  background-color: #7b8cd6;
 }
 
 .background-gray {
-  background-color: rgb(246, 246, 239);
+  background-color: rgb(215, 215, 241);
 }
 
 .f11 {
@@ -25,7 +27,7 @@ input {
 }
 
 .w85 {
-  width: 85%;
+  width: 100%;
 }
 
 .button {

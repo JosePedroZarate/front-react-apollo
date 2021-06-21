@@ -81,6 +81,7 @@ const CreateLink = () => {
         }}
       >
         <div className="flex flex-column mt3">
+
           <input
             className="mb2"
             value={formState.description}
@@ -91,7 +92,7 @@ const CreateLink = () => {
               })
             }
             type="text"
-            placeholder="A description for the link"
+            placeholder="✍🏻 INGRESAR DESCRIPCION DEL LINK"
           />
           <input
             className="mb2"
@@ -103,14 +104,14 @@ const CreateLink = () => {
               })
             }
             type="text"
-            placeholder="The URL for the link"
+            placeholder="🔗 INGRESAR URL DEL LINK"
           />
         </div>
         <button type="submit"  onClick={ () => {
         createLink()
           clickHistory() //Se llama a la funcion
 
-        } }>Submit</button>
+        } }>GUARDAR</button>
       </form>
     </div>
   );

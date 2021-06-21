@@ -7,8 +7,6 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './Login'
 import Search from './Search';;
 
-
-
 const App = () => (
   <div className="center w85">
     <Header />

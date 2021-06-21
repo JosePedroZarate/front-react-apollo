@@ -87,7 +87,7 @@ const [signup] = useMutation(SIGNUP_MUTATION, {
   return (
     <div>
       <h4 className="mv3">
-        {formState.login ? 'Login' : 'Sign Up'}
+        {formState.login ? '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀ ⠀LOGIN 👤' : '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ CREAR CUENTA 👤'}
       </h4>
       <div className="flex flex-column">
         {!formState.login && (
@@ -100,7 +100,7 @@ const [signup] = useMutation(SIGNUP_MUTATION, {
               })
             }
             type="text"
-            placeholder="Your name"
+            placeholder="👤 INGRESA TU NOMBRE AQUI CRACK!"
           />
         )}
         <input
@@ -112,7 +112,7 @@ const [signup] = useMutation(SIGNUP_MUTATION, {
             })
           }
           type="text"
-          placeholder="Your name"
+          placeholder="✉️ TU CORREO AQUI CRACK!"
         />
         <input
           value={formState.password}
@@ -123,7 +123,7 @@ const [signup] = useMutation(SIGNUP_MUTATION, {
             })
           }
           type="password"
-          placeholder="Choose a safe password"
+          placeholder="🔑 AQUI TU CONTRASEÑA xD"
         />
       </div>
       <div className="flex mt3">
@@ -143,7 +143,7 @@ const [signup] = useMutation(SIGNUP_MUTATION, {
       }
     }}
   >
-    {formState.login ? 'login' : 'create account' }
+    {formState.login ? 'INGRESAR' : 'CREAR' }
 
 
   </button >
@@ -157,8 +157,8 @@ const [signup] = useMutation(SIGNUP_MUTATION, {
     }
   >
           {formState.login
-            ? 'need to create an account?'
-            : 'already have an account?'}
+            ? '¿NO TIENES CUENTA?'
+            : '¿YA TIENES CUENTA CRACK?'}
         </button>
       </div>
     </div>

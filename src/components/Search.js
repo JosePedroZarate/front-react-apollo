@@ -40,7 +40,7 @@ const Search = () => {
   return (
     <>
       <div>
-        Search
+      🔍⠀
         <input
           type="text"
           onChange={(e) => setSearchFilter(e.target.value)}
@@ -52,7 +52,7 @@ const Search = () => {
             })
           }
         >
-          OK
+      BUSCAR
         </button>
       </div>
       {data &&
